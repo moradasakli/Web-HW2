@@ -10,6 +10,7 @@ const SignIn = () => {
   const [error, setError] = useState('');
   const { setAuth } = useContext(AuthContext);
   const navigate = useNavigate();
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -21,7 +22,10 @@ const SignIn = () => {
         password,
       });
 
-      setAuth({ username: response.data.username, token: response.data.token });
+     
+      setAuth({ username: response.data.username, token: response.data.token, score:response.data.score });
+        console.log('username after recieving:', response.data);
+
       navigate('/'); // Redirect to the homepage after login
     } catch (err) {
       setError('Invalid username or password');
